@@ -1,6 +1,6 @@
 module.exports = function () {
   var config = {
-    temp: './assets/tmp',
+    temp: './assets/tmp/',
     alljs: [
       './src/**/*.js',
       './*.js'

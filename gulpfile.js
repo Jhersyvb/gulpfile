@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
+var del = require('del');
 var nib = require('nib');
 var config = require('./gulp.config')();
 
@@ -17,17 +18,33 @@ gulp.task('vet', function() {
 		.pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('styles', function () {
+gulp.task('styles', ['clean-styles'], function () {
 	log('Compiling Stylus -> CSS');
 
 	return gulp
 		.src(config.stylus)
+		.pipe($.plumber())
 		.pipe($.stylus({
 			compress: true,
 			use: nib()
 		}))
+		// .on('error', errorLogger)
 		.pipe(gulp.dest(config.temp));
 });
+
+gulp.task('clean-styles', function () {
+	var files = config.temp + '*.css';
+	clean(files);
+});
+
+gulp.task('stylus-watcher', function () {
+	gulp.watch([config.stylus], ['styles']);
+});
+
+function clean (path) {
+	log('Cleaning: ' + $.util.colors.blue(path));
+	del(path);
+}
 
 function log(msg) {
 	if (typeof(msg)==='object') {
