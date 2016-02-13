@@ -1,24 +1,17 @@
 {
-  "name": "Gulpfile",
-  "version": "0.0.1",
-  "description": "Starter Code for JavaScript Build Automation with Gulp.js",
-  "authors": [
-    "Jhersy"
-  ],
-  "license": "ISC",
-  "homepage": "https://github.com/Jhersyvb/gulpfile",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Jhersyvb/gulpfile.git"
-  },
-  "scripts": {},
+  "name": "gulpfile",
+  "version": "1.0.0",
+  "description": "Codigo de arranque para construir la estructura de carpetas y archivos para una web automatizado con Gulp.js",
+  "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-if": "^2.0.0",
     "gulp-jscs": "^3.0.2",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-print": "^2.0.1",
     "gulp-stylus": "^2.3.0",
     "gulp-util": "^3.0.7",
@@ -26,5 +19,18 @@
     "jshint-stylish": "^2.1.0",
     "nib": "^1.1.0",
     "yargs": "^3.32.0"
-  }
+  },
+  "scripts": {
+    "start": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jhersyvb/gulpfile.git"
+  },
+  "author": "Jhersy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jhersyvb/gulpfile/issues"
+  },
+  "homepage": "https://github.com/Jhersyvb/gulpfile#readme"
 }

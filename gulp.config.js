@@ -1,11 +1,11 @@
 module.exports = function () {
   var config = {
-    temp: './assets/tmp/',
+    styles: './assets/styles/',
     alljs: [
-      './src/**/*.js',
+      './source/**/*.js',
       './*.js'
     ],
-    stylus: './src/styles/*.styl'
+    stylus: './source/styles/*.styl'
   };
 
   return config;

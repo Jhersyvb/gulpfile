@@ -1,7 +1,7 @@
-var gulp = require('gulp');
-var args = require('yargs').argv;
-var del = require('del');
-var nib = require('nib');
+var gulp   = require('gulp');
+var args   = require('yargs').argv;
+var del    = require('del');
+var nib    = require('nib');
 var config = require('./gulp.config')();
 
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -28,12 +28,11 @@ gulp.task('styles', ['clean-styles'], function () {
 			compress: true,
 			use: nib()
 		}))
-		// .on('error', errorLogger)
-		.pipe(gulp.dest(config.temp));
+		.pipe(gulp.dest(config.styles));
 });
 
 gulp.task('clean-styles', function () {
-	var files = config.temp + '*.css';
+	var files = config.styles + '*.css';
 	clean(files);
 });
 
