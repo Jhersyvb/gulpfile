@@ -1,8 +1,9 @@
-var gulp   = require('gulp');
-var args   = require('yargs').argv;
-var del    = require('del');
-var nib    = require('nib');
-var config = require('./gulp.config')();
+var gulp       = require('gulp');
+var args       = require('yargs').argv;
+var del        = require('del');
+var nib        = require('nib');
+var koutoSwiss = require('kouto-swiss');
+var config     = require('./gulp.config')();
 
 var $ = require('gulp-load-plugins')({lazy: true});
 
@@ -26,7 +27,10 @@ gulp.task('styles', ['clean-styles'], function () {
 		.pipe($.plumber())
 		.pipe($.stylus({
 			compress: true,
-			use: nib()
+			use: [
+				nib(),
+				koutoSwiss()
+			]
 		}))
 		.pipe(gulp.dest(config.styles));
 });
@@ -36,7 +40,7 @@ gulp.task('clean-styles', function () {
 	clean(files);
 });
 
-gulp.task('stylus-watcher', function () {
+gulp.task('styles-watcher', function () {
 	gulp.watch([config.stylus], ['styles']);
 });
 
