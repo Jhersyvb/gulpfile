@@ -30,10 +30,10 @@ gulp.task('scripts', ['compile-scripts'], function () {
 });
 
 gulp.task('compile-scripts', ['clean-scripts'], function () {
-	log('Compiling Javascripts -> *.js');
-
 	var files = config.dest + config.scripts.dest + '*.js';
 	clean(files);
+
+	log('Compiling Javascripts -> *.js');
 
 	return gulp
 		.src(config.src + config.scripts.src)
@@ -47,7 +47,7 @@ gulp.task('clean-scripts', function () {
 });
 
 gulp.task('watch-scripts', function () {
-	gulp.watch([config.src + config.scripts.src], ['scripts']);
+	gulp.watch([config.src + config.scripts.src], ['compile-scripts']);
 });
 
 gulp.task('styles', ['compile-styles'], function () {
@@ -60,10 +60,10 @@ gulp.task('styles', ['compile-styles'], function () {
 });
 
 gulp.task('compile-styles', ['clean-styles'], function () {
-	log('Compiling Stylus -> CSS');
-
 	var files = config.dest + config.styles.dest + '*.css';
 	clean(files);
+
+	log('Compiling Stylus -> CSS');
 
 	return gulp
 		.src(config.src + config.styles.src)
